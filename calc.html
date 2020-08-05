@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<title>Simple Calculator</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@577&display=swap" rel="stylesheet">
+
+		<style>
+			* {
+				font-size: 140%;
+			}
+
+			.container {
+				width: 500px;
+			}
+
+			.row {
+				margin-bottom: 10px;
+			}
+
+			.numeric {
+				font-family: 'Inconsolata', monospace;
+			}
+
+			#output {
+				text-align: center;
+				font-size: 140;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+
+			<h1>Simple Calculator</h1>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<input id="input1" class="form-control numeric" placeholder="Enter a number">
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<input id="input2" class="form-control numeric" placeholder="And another number">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3"><button onclick="doAdd();" class="btn btn-primary btn-plus">+</button></div>
+				<div class="col-sm-3"><button onclick="doSubtract();" class="btn btn-info btn-subtract">-</button></div>
+				<div class="col-sm-3"><button onclick="doMultiply();" class="btn btn-warning">*</button></div>
+				<div class="col-sm-3"><button onclick="doDivide();" class="btn btn-danger">/</button></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					Result: <h2 id="output" class="numeric">0</h2>
+				</div>
+			</div>
+		</div>
+
+		<script>
+
+			function doAdd() {
+				let vals = getVals();
+				let result = vals[0] + vals[1];
+				showOutput(result);
+			}
+
+			function doSubtract() {
+				let vals = getVals();
+				let result = vals[0] - vals[1];
+				showOutput(result);
+			}
+
+			function doMultiply() {
+				let vals = getVals();
+				let result = vals[0] * vals[1];
+				showOutput(result);
+			}
+
+			function doDivide() {
+				let vals = getVals();
+				let result = vals[0] / vals[1];
+				showOutput(result);
+			}
+
+			function showOutput(result) {
+				document.getElementById("output").innerHTML = result;
+				clearVals();
+			}
+
+			function getVals() {
+				let val1 = parseFloat(document.getElementById("input1").value);
+				let val2 = parseFloat(document.getElementById("input2").value);
+				return [val1, val2];
+			}
+
+			function clearVals() {
+				document.getElementById("input1").value = null;
+				document.getElementById("input2").value = null;
+			}
+
+		</script>
+
+	</body>
+</html>
